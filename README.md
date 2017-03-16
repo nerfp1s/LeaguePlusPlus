@@ -1,3 +1,3 @@
 # LeaguePlusPlus
 
-Credits/People I borrowed code from: Detuks
+Credits/People I borrowed code from: Diabaths, Kornis
