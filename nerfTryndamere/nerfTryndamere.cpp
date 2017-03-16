@@ -184,7 +184,14 @@ void Combo()
 
 void Harass()
 {
-
+	if (harassW->Enabled())
+	{
+		auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, 1000);
+		if (W->IsReady() && W->Range() && !target->IsFacing(myHero))
+		{
+			W->CastOnTarget(target);
+		}
+	}
 }
 
 
