@@ -1,4 +1,4 @@
-// Huge Credits to Diabaths took like 99% of his code base :^)
+// Huge Credits to Detuks took like 99% of his code base :^)
 
 #include "PluginSDK.h"
 
