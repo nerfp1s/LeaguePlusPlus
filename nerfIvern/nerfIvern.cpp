@@ -10,7 +10,7 @@ IMenu* WMenu;
 IMenu* EMenu;
 IMenu* RMenu;
 IMenu* PriorityE;
-IMenu* Drawings;
+IMenu* DrawingsIvern;
 
 IMenuOption* useQcombo;
 IMenuOption* useQ2combo;
@@ -98,10 +98,10 @@ void  Menu()
 	ShieldEmy = EMenu->AddInteger("My HP percent(if lower than)", 10, 100, 40);
 	PriorityE = MainMenu->AddMenu("E Priority");
 
-	Drawings = MainMenu->AddMenu("Drawings");
-	DrawReady = Drawings->CheckBox("Draw Only Ready Spells", true);
-	DrawQ = Drawings->CheckBox("Draw Q", true);
-	DrawE = Drawings->CheckBox("Draw E", true);
+	DrawingsIvern = MainMenu->AddMenu("Spell Drawings");
+	DrawReady = DrawingsIvern->CheckBox("Draw Only Ready Spells", true);
+	DrawQ = DrawingsIvern->CheckBox("Draw Q", true);
+	DrawE = DrawingsIvern->CheckBox("Draw E", true);
 }
 
 void LoadSpells()
@@ -684,7 +684,7 @@ PLUGIN_EVENT(void) OnRender()
 	{
 		if (Q->IsReady() && DrawQ->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), Q->Range()); }
 
-		if (W->IsReady() && DrawE->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), E->Range()); }
+		if (E->IsReady() && DrawE->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), E->Range()); }
 	}
 	else
 	{
