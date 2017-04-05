@@ -84,7 +84,7 @@ void LoadSpells()
 	W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, false, false, static_cast<eCollisionFlags>(kCollidesWithNothing));
 	R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, true, true, static_cast<eCollisionFlags>(kCollidesWithYasuoWall));
 
-	R->SetOverrideRange(Rrange);
+	//R->SetOverrideRange(Rrange);
 }
 
 
@@ -178,15 +178,15 @@ void Combo()
 	if (useRcombo->Enabled() && R->IsReady())
 	{
 		auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, 900);
-		if (myHero->IsValidTarget(target, 400) && myHero->GetLevel() >= 6 && myHero->GetLevel() <= 10 && GGame->CurrentTick() - lastR > 1000)
+		if (myHero->IsValidTarget(target, 400) && myHero->GetLevel() >= 6 && myHero->GetLevel() <= 10 /*&& GGame->CurrentTick() - lastR > 1000*/)
 		{
 			R->CastOnTarget(target);
-			lastR = GGame->CurrentTick();
+			//lastR = GGame->CurrentTick();
 		}
-		if (myHero->IsValidTarget(target, 650) && myHero->GetLevel() >= 11 && myHero->GetLevel() <= 15 && GGame->CurrentTick() - lastR > 1000)
+		if (myHero->IsValidTarget(target, 650) && myHero->GetLevel() >= 11 && myHero->GetLevel() <= 15 /*&& GGame->CurrentTick() - lastR > 1000*/)
 		{
 			R->CastOnTarget(target);
-			lastR = GGame->CurrentTick();
+			//lastR = GGame->CurrentTick();
 		}
 		if (myHero->IsValidTarget(target, 900) && myHero->GetLevel() >= 16 /*&& GGame->CurrentTick() - lastR > 1000*/)
 		{
@@ -217,20 +217,20 @@ void Harass()
 	if (useRharass->Enabled() && R->IsReady())
 	{
 		auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, 900);
-		if (myHero->IsValidTarget(target, 400) && myHero->GetLevel() >= 6 && myHero->GetLevel() <= 10 && lastR > 1000)
+		if (myHero->IsValidTarget(target, 400) && myHero->GetLevel() >= 6 && myHero->GetLevel() <= 10 /*&& lastR > 1000*/)
 		{
 			R->CastOnTarget(target);
-			lastR = GGame->CurrentTick();
+			//lastR = GGame->CurrentTick();
 		}
-		if (myHero->IsValidTarget(target, 650) && myHero->GetLevel() >= 11 && myHero->GetLevel() <= 15 && lastR > 1000)
+		if (myHero->IsValidTarget(target, 650) && myHero->GetLevel() >= 11 && myHero->GetLevel() <= 15 /*&& lastR > 1000*/)
 		{
 			R->CastOnTarget(target);
-			lastR = GGame->CurrentTick();
+			//lastR = GGame->CurrentTick();
 		}
-		if (myHero->IsValidTarget(target, 900) && myHero->GetLevel() >= 16 && lastR > 1000)
+		if (myHero->IsValidTarget(target, 900) && myHero->GetLevel() >= 16 /*&& lastR > 1000*/)
 		{
 			R->CastOnTarget(target);
-			lastR = GGame->CurrentTick();
+			//lastR = GGame->CurrentTick();
 		}
 	}
 }
@@ -305,14 +305,14 @@ PLUGIN_EVENT(void) OnBeforeAttack(IUnit* source, IUnit* target)
 
 PLUGIN_EVENT(void) OnRender()
 {
-	if (R->IsReady()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), Rrange); }
+	//if (R->IsReady()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), Rrange); }
 }
 
 
 PLUGIN_EVENT(void) OnGameUpdate()
 {
 	if (GGame->IsChatOpen()) return;
-	if (myHero->GetLevel() >= 6 && myHero->GetLevel() <= 10)
+	/*if (myHero->GetLevel() >= 6 && myHero->GetLevel() <= 10)
 	{
 		Rrange = 400;
 	}
@@ -323,7 +323,7 @@ PLUGIN_EVENT(void) OnGameUpdate()
 	if (myHero->GetLevel() >= 16)
 	{
 		Rrange = 900;
-	}
+	}*/
 	if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
 	{
 		Combo();
