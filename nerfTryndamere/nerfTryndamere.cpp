@@ -1,4 +1,4 @@
-// Huge Credits to Diabaths took like 99% of his code base :^)
+// Huge Credits to Detuks took like 99% of his code base :^)
 
 #include "PluginSDK.h"
 
@@ -152,7 +152,7 @@ void Combo()
 {
 	if (comboE->Enabled())
 	{
-		auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, 660);
+		auto target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, 660);
 		if (E->IsReady() && E->Range())
 		{			
 			if (target != nullptr)
@@ -174,10 +174,13 @@ void Combo()
 	}
 	if (comboW->Enabled())
 	{
-		auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, 1000);
-		if (W->IsReady() && W->Range() && !target->IsFacing(myHero))
+		auto target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, 1000);
+		if (W->IsReady() && W->Range()) 
 		{
-			W->CastOnTarget(target);
+			if (target != nullptr && !target->IsFacing(myHero))
+			{
+				W->CastOnPlayer();
+			}
 		}
 	}
 }
@@ -186,10 +189,13 @@ void Harass()
 {
 	if (harassW->Enabled())
 	{
-		auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, 1000);
-		if (W->IsReady() && W->Range() && !target->IsFacing(myHero))
+		auto target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, 1000);
+		if (W->IsReady() && W->Range())
 		{
-			W->CastOnTarget(target);
+			if (target != nullptr && !target->IsFacing(myHero))
+			{
+				W->CastOnPlayer();
+			}
 		}
 	}
 }
