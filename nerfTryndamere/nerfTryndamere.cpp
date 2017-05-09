@@ -208,7 +208,7 @@ void killsteal()
 
 void tryndaR()
 {
-	if (autoR->Enabled() && !myHero->IsDead() && myHero->HealthPercent() <= autoRpercent->GetFloat())
+	if (!myHero->IsRecalling() && autoR->Enabled() && !myHero->IsDead() && myHero->HealthPercent() <= autoRpercent->GetFloat())
 	{
 		R->CastOnPlayer();
 	}
@@ -216,7 +216,7 @@ void tryndaR()
 
 void tryndaQ()
 {
-	if (autoQ->Enabled() && !myHero->IsDead() && myHero->HealthPercent() <= autoQpercent->GetFloat() && myHero->ManaPercent() <= autoQfury->GetFloat())
+	if (!myHero->IsRecalling() && autoQ->Enabled() && !myHero->IsDead() && myHero->HealthPercent() <= autoQpercent->GetFloat() && myHero->ManaPercent() <= autoQfury->GetFloat())
 	{
 		Q->CastOnPlayer();
 	}
