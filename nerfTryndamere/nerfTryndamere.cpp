@@ -216,7 +216,7 @@ void tryndaR()
 
 void tryndaQ()
 {
-	if (!myHero->IsRecalling() && autoQ->Enabled() && !myHero->IsDead() && myHero->HealthPercent() <= autoQpercent->GetFloat() && myHero->ManaPercent() <= autoQfury->GetFloat())
+	if (!myHero->IsRecalling() && autoQ->Enabled() && !myHero->IsDead() && myHero->HealthPercent() <= autoQpercent->GetFloat() && myHero->ManaPercent() >= autoQfury->GetFloat())
 	{
 		Q->CastOnPlayer();
 	}
